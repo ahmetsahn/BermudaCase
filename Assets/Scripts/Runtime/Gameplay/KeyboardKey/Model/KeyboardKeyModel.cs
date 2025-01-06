@@ -11,7 +11,7 @@ namespace Runtime.Gameplay.KeyboardKey.Model
         
         public readonly Color FeedbackColor = Color.green;
 
-        public const float FeedbackDuration = 0.1f;
+        public const float FeedbackDuration = 0.25f;
         public const float FeedbackHeight = 0.6f;
 
         public const Ease FeedbackEase = Ease.InBounce;
