@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4b8037bae145acb04a7cf22e61efe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 4446971696630448788}
   BoxCollider: {fileID: 4627912056110163152}
 --- !u!114 &9201339545379961583
 MonoBehaviour:
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handModelConfig:
     ColliderToggleDelay: 0.1
+    PushRateIncreaseAmount: 0.5
 --- !u!114 &1401659967519863223
 MonoBehaviour:
   m_ObjectHideFlags: 0

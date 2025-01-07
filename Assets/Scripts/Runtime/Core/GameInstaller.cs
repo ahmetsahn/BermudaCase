@@ -42,6 +42,9 @@ namespace Runtime.Core
             Container.DeclareSignal<OpenUIPanelSignal>();
             Container.DeclareSignal<CloseUIPanelSignal>();
             Container.DeclareSignal<CloseAllUIPanelsSignal>();
+            Container.DeclareSignal<PushRateBuffSignal>();
+            Container.DeclareSignal<WidthBuffSignal>();
+            Container.DeclareSignal<LengthBuffSignal>();
         }
     }
 }

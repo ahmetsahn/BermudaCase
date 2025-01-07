@@ -8,6 +8,8 @@ namespace Runtime.Gameplay.Hand.View
 {
     public class HandView : MonoBehaviour
     {
+        public Animator Animator;
+        
         public BoxCollider BoxCollider;
         public event Action<Collider> OnTriggerCollider;
         
