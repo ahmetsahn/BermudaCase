@@ -25,7 +25,6 @@ namespace Runtime.Managers
 
         public void Initialize()
         {
-            _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.ReadyToPlayPanel));
             LoadCurrentLevel();
             _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
         }
@@ -45,10 +44,13 @@ namespace Runtime.Managers
         {
             _signalBus.Fire(new DestroyCurrentLevelSignal());
             IncreaseCurrentLevelIndex();
-            _signalBus.Fire(new CloseUIPanelSignal(UIPanelType.FinishPanel));
-            _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.ReadyToPlayPanel));
             LoadCurrentLevel();
             _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
+        }
+        
+        private void SetTimeScale(int timeScale)
+        {
+            Time.timeScale = timeScale;
         }
         
         private void IncreaseCurrentLevelIndex()
@@ -66,14 +68,18 @@ namespace Runtime.Managers
 
             switch (_currentGameState)
             {
-                case GameState.Loading:
-                    break;
                 case GameState.ReadyToStart:
+                    SetTimeScale(0);
+                    _signalBus.Fire(new CloseUIPanelSignal(UIPanelType.FinishPanel));
+                    _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.ReadyToPlayPanel));
                     break;
                 case GameState.Playing:
-                    _signalBus.Fire(new GameStartedSignal());
+                    _signalBus.Fire(new CloseUIPanelSignal(UIPanelType.ReadyToPlayPanel));
+                    SetTimeScale(1);
                     break;
-                case GameState.GameOver:
+                case GameState.Finished:
+                    SetTimeScale(0);
+                    _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.FinishPanel));
                     break;
             }
         }

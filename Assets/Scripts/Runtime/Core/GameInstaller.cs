@@ -35,7 +35,6 @@ namespace Runtime.Core
         {
             SignalBusInstaller.Install(Container);
             
-            Container.DeclareSignal<GameStartedSignal>();
             Container.DeclareSignal<SetGameStateSignal>();
             Container.DeclareSignal<CompleteLevelSignal>();
             Container.DeclareSignal<LoadLevelSignal>();

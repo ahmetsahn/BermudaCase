@@ -2,10 +2,8 @@
 {
     public enum GameState
     {
-        Loading,
         ReadyToStart,
         Playing,
-        Paused,
-        GameOver
+        Finished
     }
 }

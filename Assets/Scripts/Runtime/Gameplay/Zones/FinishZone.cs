@@ -31,8 +31,7 @@ namespace Runtime.Gameplay.Zones
 
         private void OnInteractHandler()
         {
-            Time.timeScale = 0;
-            _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.FinishPanel));
+            _signalBus.Fire(new SetGameStateSignal(GameState.Finished));
         }
         
         private void UnsubscribeEvents()

@@ -2,6 +2,8 @@
 using Cysharp.Threading.Tasks;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
+using Runtime.Gameplay.Zones;
+using UnityEngine;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
@@ -23,9 +25,12 @@ namespace Runtime.Gameplay.Hand.Controller
             _view.OnTriggerCollider += OnTriggerCollider;
         }
         
-        private void OnTriggerCollider()
+        private void OnTriggerCollider(Collider collider)
         {
-            ToggleColliderTemporarily().Forget();
+            if (!collider.TryGetComponent(out FinishZone finishZone))
+            {
+                ToggleColliderTemporarily().Forget();
+            }
         }
         
         private async UniTaskVoid ToggleColliderTemporarily()

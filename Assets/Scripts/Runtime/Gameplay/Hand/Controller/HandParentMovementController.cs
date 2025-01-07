@@ -12,20 +12,15 @@ namespace Runtime.Gameplay.Hand.Controller
         private readonly HandParentView _parentView;
         
         private readonly HandParentModel _parentModel;
-
-        private readonly SignalBus _signalBus;
-        
-        private bool _isGameStarted = false;
         
         private float _currentX;
         private float _currentZ;
 
-        public HandParentMovementController(HandParentView parentView, HandParentModel parentModel, SignalBus signalBus)
+        public HandParentMovementController(HandParentView parentView, HandParentModel parentModel)
         {
             _parentView = parentView;
             _parentModel = parentModel;
-            _signalBus = signalBus;
-
+            
             Initialize();
             SubscribeEvents();
         }
@@ -39,21 +34,10 @@ namespace Runtime.Gameplay.Hand.Controller
         private void SubscribeEvents()
         {
             _parentView.OnSwipe += OnSwipe;
-            _signalBus.Subscribe<GameStartedSignal>(OnGameStarted);
-        }
-        
-        private void OnGameStarted()
-        {
-            _isGameStarted = true;
         }
         
         public void Tick()
         {
-            if (!_isGameStarted)
-            {
-                return;
-            }
-            
             ForwardMove();
         }
 
@@ -85,7 +69,6 @@ namespace Runtime.Gameplay.Hand.Controller
         private void UnsubscribeEvents()
         {
             _parentView.OnSwipe -= OnSwipe;
-            _signalBus.Unsubscribe<GameStartedSignal>(OnGameStarted);
         }
         public void Dispose()
         {

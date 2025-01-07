@@ -35,11 +35,6 @@ namespace Runtime.Managers
 
         private void OnLoadLevel(LoadLevelSignal signal) 
         {
-            if (_currentLevelInstance != null)
-            {
-                _signalBus.Fire(new DestroyCurrentLevelSignal());
-            }
-            
             Addressables.LoadAssetAsync<GameObject>(_levelPrefabs[signal.LevelIndex]).Completed += OnAddressableLoaded;
         }
         
