@@ -1,4 +1,5 @@
-﻿using Runtime.Signals;
+﻿using Runtime.Enums;
+using Runtime.Signals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +9,6 @@ namespace Runtime.UI
 {
     public class ReadyToPlayPanelView : MonoBehaviour
     {
-        [SerializeField]
-        private Text readyToPlayText;
-        
         private SignalBus _signalBus;
         
         [Inject]
@@ -31,7 +29,7 @@ namespace Runtime.UI
         
         private void OnGameStarted()
         {
-            readyToPlayText.gameObject.SetActive(false);
+            _signalBus.Fire(new CloseUIPanelSignal(UIPanelType.ReadyToPlayPanel));
         }
         
         private void UnsubscribeEvents()

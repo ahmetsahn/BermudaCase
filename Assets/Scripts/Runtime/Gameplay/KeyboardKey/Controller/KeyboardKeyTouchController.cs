@@ -7,11 +7,11 @@ namespace Runtime.Gameplay.KeyboardKey.Controller
 {
     public class KeyboardKeyTouchController : IDisposable
     {
-        private readonly KeyboardKeyView _view;
+        private readonly InteractableView _view;
         
         private readonly KeyboardKeyModel _model;
         
-        public KeyboardKeyTouchController(KeyboardKeyView view, KeyboardKeyModel model)
+        public KeyboardKeyTouchController(InteractableView view, KeyboardKeyModel model)
         {
             _view = view;
             _model = model;
@@ -21,7 +21,7 @@ namespace Runtime.Gameplay.KeyboardKey.Controller
         
         private void SubscribeEvents()
         {
-            _view.OnFeedback += OnFeedback;
+            _view.OnInteract += OnFeedback;
         }
         
         private void OnFeedback()
@@ -61,7 +61,7 @@ namespace Runtime.Gameplay.KeyboardKey.Controller
         
         private void UnsubscribeEvents()
         {
-            _view.OnFeedback -= OnFeedback;
+            _view.OnInteract -= OnFeedback;
         }
 
         public void Dispose()

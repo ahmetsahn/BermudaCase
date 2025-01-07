@@ -6,12 +6,11 @@ using UnityEngine;
 
 namespace Runtime.Gameplay.KeyboardKey.View
 {
-    public class KeyboardKeyView : MonoBehaviour, IKeyboardKey
+    public class InteractableView : MonoBehaviour, IInteractable
     {
         public MeshRenderer MeshRenderer;
         
         public TextMeshPro TouchCountText;
-
-        public Action OnFeedback { get; set; }
+        public Action OnInteract { get; set; }
     }
 }
