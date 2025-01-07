@@ -1,4 +1,4 @@
-﻿namespace Runtime.Core.Enums
+﻿namespace Runtime.Enums
 {
     public enum GameState
     {

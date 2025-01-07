@@ -1,6 +1,6 @@
 ﻿using System;
-using Runtime.Core.Enums;
 using Runtime.Core.Interface;
+using Runtime.Enums;
 using Runtime.Gameplay.Hand.View;
 using Runtime.Managers;
 using Runtime.Signals;
@@ -49,7 +49,7 @@ namespace Runtime.Gameplay.Hand.Controller
         {
             if (_inputHandler.TapToStart() && _gameManager.GetGameState().Equals(GameState.ReadyToStart))
             {
-                _signalBus.Fire(new GameStartedSignal());
+                _signalBus.Fire(new SetGameStateSignal(GameState.Playing));
             }
             
             if (_inputHandler.IsInputActive())

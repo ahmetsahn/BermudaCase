@@ -1,4 +1,4 @@
-﻿using Runtime.Core.Enums;
+﻿using Runtime.Enums;
 
 namespace Runtime.Signals
 {

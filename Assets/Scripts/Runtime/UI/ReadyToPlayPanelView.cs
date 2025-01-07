@@ -1,6 +1,7 @@
 ﻿using Runtime.Signals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Runtime.UI
@@ -8,7 +9,7 @@ namespace Runtime.UI
     public class ReadyToPlayPanelView : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI readyToPlayText;
+        private Text readyToPlayText;
         
         private SignalBus _signalBus;
         

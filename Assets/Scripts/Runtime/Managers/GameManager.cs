@@ -1,5 +1,5 @@
 ﻿using System;
-using Runtime.Core.Enums;
+using Runtime.Enums;
 using Runtime.Signals;
 using UnityEngine;
 using Zenject;
@@ -36,19 +36,13 @@ namespace Runtime.Managers
             switch (_currentGameState)
             {
                 case GameState.Loading:
-                    // Yükleme işlemleri
                     break;
                 case GameState.ReadyToStart:
-                    // Kullanıcının oyunu başlatmasını bekle
-                    Debug.Log("Tap to Start!");
                     break;
                 case GameState.Playing:
-                    // Oyun başladı
-                    Debug.Log("Game Started!");
+                    _signalBus.Fire(new GameStartedSignal());
                     break;
                 case GameState.GameOver:
-                    // Oyun bitti
-                    Debug.Log("Game Over!");
                     break;
             }
         }
