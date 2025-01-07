@@ -1,5 +1,6 @@
 ﻿﻿using System;
-using Runtime.Signals;
+ using Runtime.Enums;
+ using Runtime.Signals;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -33,14 +34,22 @@ namespace Runtime.Managers
             _signalBus.Subscribe<DestroyCurrentLevelSignal>(OnDestroyCurrentLevel);
         }
 
-        private void OnLoadLevel(LoadLevelSignal signal) 
+        private async void OnLoadLevel(LoadLevelSignal signal)
         {
-            Addressables.LoadAssetAsync<GameObject>(_levelPrefabs[signal.LevelIndex]).Completed += OnAddressableLoaded;
-        }
-        
-        private void OnAddressableLoaded(AsyncOperationHandle<GameObject> levelPrefab)
-        {
-            _currentLevelInstance = _instantiator.InstantiatePrefab(levelPrefab.Result);
+            try
+            {
+                _signalBus.Fire(new SetGameStateSignal(GameState.Loading));
+                
+                var levelPrefabHandle = await Addressables.LoadAssetAsync<GameObject>(_levelPrefabs[signal.LevelIndex]).Task;
+                
+                _currentLevelInstance = _instantiator.InstantiatePrefab(levelPrefabHandle);
+                
+                _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Level loading failed: {ex.Message}");
+            }
         }
         
         private void OnDestroyCurrentLevel(DestroyCurrentLevelSignal signal)

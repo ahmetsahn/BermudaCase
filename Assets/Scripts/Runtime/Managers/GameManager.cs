@@ -25,8 +25,7 @@ namespace Runtime.Managers
 
         public void Initialize()
         {
-            LoadCurrentLevel();
-            _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
+            _signalBus.Fire(new LoadLevelSignal(_currentLevelIndex));
         }
         
         private void SubscribeEvents()
@@ -35,17 +34,11 @@ namespace Runtime.Managers
             _signalBus.Subscribe<CompleteLevelSignal>(OnCompleteLevel);
         }
         
-        private void LoadCurrentLevel()
-        {
-            _signalBus.Fire(new LoadLevelSignal(_currentLevelIndex));
-        }
-        
         private void OnCompleteLevel(CompleteLevelSignal signal)
         {
             _signalBus.Fire(new DestroyCurrentLevelSignal());
             IncreaseCurrentLevelIndex();
-            LoadCurrentLevel();
-            _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
+            _signalBus.Fire(new LoadLevelSignal(_currentLevelIndex));
         }
         
         private void SetTimeScale(int timeScale)
@@ -68,9 +61,13 @@ namespace Runtime.Managers
 
             switch (_currentGameState)
             {
+                case GameState.Loading:
+                    _signalBus.Fire(new CloseAllUIPanelsSignal());
+                    _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.LoadingPanel));
+                    break;
                 case GameState.ReadyToStart:
                     SetTimeScale(0);
-                    _signalBus.Fire(new CloseUIPanelSignal(UIPanelType.FinishPanel));
+                    _signalBus.Fire(new CloseAllUIPanelsSignal());
                     _signalBus.Fire(new OpenUIPanelSignal(UIPanelType.ReadyToPlayPanel));
                     break;
                 case GameState.Playing:

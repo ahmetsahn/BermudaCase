@@ -2,6 +2,7 @@
 {
     public enum UIPanelType
     {
+        LoadingPanel,
         ReadyToPlayPanel,
         FinishPanel
     }
