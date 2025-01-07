@@ -298,7 +298,9 @@ GameObject:
   - component: {fileID: 4446971696630448788}
   - component: {fileID: 4627912056110163152}
   - component: {fileID: 4669518511145166987}
-  - component: {fileID: 3181984426295191647}
+  - component: {fileID: 6801331528454384251}
+  - component: {fileID: 9201339545379961583}
+  - component: {fileID: 1401659967519863223}
   m_Layer: 0
   m_Name: buttonpush_hand-anim01-export08
   m_TagString: Untagged
@@ -393,7 +395,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3181984426295191647
+--- !u!114 &6801331528454384251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,9 +404,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269157657122883472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be91cde6b5ec4f10a7ba30d7c8c9eefa, type: 3}
+  m_Script: {fileID: 11500000, guid: be4b8037bae145acb04a7cf22e61efe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoxCollider: {fileID: 4627912056110163152}
+--- !u!114 &9201339545379961583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269157657122883472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3566b04a62ff48a5b4cf87007bf1388d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handModelConfig:
+    ColliderToggleDelay: 0.1
+--- !u!114 &1401659967519863223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269157657122883472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 9201339545379961583}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &1381228369859036292
 GameObject:
   m_ObjectHideFlags: 0

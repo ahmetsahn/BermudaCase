@@ -1,18 +1,14 @@
-﻿using System;
-using Runtime.Core.Interface;
-using Runtime.Signals;
+﻿using Runtime.Signals;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Runtime.Gameplay.Hand.View
+namespace Runtime.UI
 {
-    public class HandView : MonoBehaviour
+    public class ReadyToPlayPanelView : MonoBehaviour
     {
         [SerializeField]
-        private Animator animator;
-        
-        public BoxCollider BoxCollider;
-        public event Action OnTriggerCollider;
+        private TextMeshProUGUI readyToPlayText;
         
         private SignalBus _signalBus;
         
@@ -21,15 +17,7 @@ namespace Runtime.Gameplay.Hand.View
         {
             _signalBus = signalBus;
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent(out IKeyboardKey keyboardKey))
-            {
-                keyboardKey.OnFeedback?.Invoke();
-                OnTriggerCollider?.Invoke();
-            }
-        }
-
+        
         private void OnEnable()
         {
             SubscribeEvents();
@@ -42,7 +30,7 @@ namespace Runtime.Gameplay.Hand.View
         
         private void OnGameStarted()
         {
-            animator.enabled = true;
+            readyToPlayText.gameObject.SetActive(false);
         }
         
         private void UnsubscribeEvents()

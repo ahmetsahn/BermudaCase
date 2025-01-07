@@ -29,5 +29,10 @@ namespace Runtime.InputHandler
         {
             return Input.GetMouseButton(0);
         }
+
+        public bool TapToStart()
+        {
+            return Input.GetMouseButtonDown(0);
+        }
     }
 }

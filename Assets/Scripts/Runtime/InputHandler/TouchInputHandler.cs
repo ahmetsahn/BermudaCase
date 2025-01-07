@@ -33,5 +33,10 @@ namespace Runtime.InputHandler
         {
             return Input.touchCount > 0;
         }
+
+        public bool TapToStart()
+        {
+            return Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began;
+        }
     }
 }

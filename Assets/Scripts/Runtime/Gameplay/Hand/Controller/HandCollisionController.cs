@@ -1,28 +1,48 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Runtime.Core.Interface;
-using UnityEngine;
+using Runtime.Gameplay.Hand.Model;
+using Runtime.Gameplay.Hand.View;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
-    public class HandCollisionController : MonoBehaviour
+    public class HandCollisionController : IDisposable
     {
-        [SerializeField]
-        private BoxCollider boxCollider;
-        private void OnTriggerEnter(Collider other)
+        private readonly HandView _view;
+
+        private readonly HandModel _model;
+        public HandCollisionController(HandView view, HandModel model)
         {
-            if (other.TryGetComponent(out IKeyboardKey keyboardKey))
-            {
-                keyboardKey.OnFeedback?.Invoke();
-                ToggleColliderTemporarily().Forget();
-            }
+            _view = view;
+            _model = model;
+            
+            SubscribeEvents();
+        }
+        
+        private void SubscribeEvents()
+        {
+            _view.OnTriggerCollider += OnTriggerCollider;
+        }
+        
+        private void OnTriggerCollider()
+        {
+            ToggleColliderTemporarily().Forget();
         }
         
         private async UniTaskVoid ToggleColliderTemporarily()
         {
-            boxCollider.enabled = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            boxCollider.enabled = true;
+            _view.BoxCollider.enabled = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(_model.ColliderToggleDelay));
+            _view.BoxCollider.enabled = true;
+        }
+        
+        private void UnsubscribeEvents()
+        {
+            _view.OnTriggerCollider -= OnTriggerCollider;
+        }
+        
+        public void Dispose()
+        {
+            UnsubscribeEvents();
         }
     }
 }

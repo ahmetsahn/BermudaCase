@@ -7,5 +7,7 @@ namespace Runtime.Core.Interface
         Vector2 GetSwipeDelta(); 
         
         bool IsInputActive();
+        
+        bool TapToStart();
     }
 }
