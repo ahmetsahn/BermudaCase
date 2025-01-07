@@ -296,9 +296,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5650526676863323271}
   - component: {fileID: 4446971696630448788}
-  - component: {fileID: -1518333353197582375}
-  - component: {fileID: -3580386494430754929}
-  - component: {fileID: -1795943685501963545}
+  - component: {fileID: 4627912056110163152}
+  - component: {fileID: 4669518511145166987}
+  - component: {fileID: 3181984426295191647}
   m_Layer: 0
   m_Name: buttonpush_hand-anim01-export08
   m_TagString: Untagged
@@ -316,7 +316,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2.4999998, y: 2.5, z: 2.4999998}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5128557325478190433}
@@ -337,7 +337,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 227d17e56b1dac845b725e1956e8b583, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -345,19 +345,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1518333353197582375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269157657122883472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57dcb7d1390a4b0ca1f93c70bd3a4bca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &-3580386494430754929
+--- !u!65 &4627912056110163152
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,9 +364,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.3, z: 0.05}
-  m_Center: {x: -0.003, y: 0.15, z: 0.047}
---- !u!54 &-1795943685501963545
+  m_Size: {x: 0.05, y: 0.1, z: 0.04}
+  m_Center: {x: -0.006, y: 0.06, z: 0.046}
+--- !u!54 &4669518511145166987
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -405,6 +393,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3181984426295191647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269157657122883472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91cde6b5ec4f10a7ba30d7c8c9eefa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1381228369859036292
 GameObject:
   m_ObjectHideFlags: 0
