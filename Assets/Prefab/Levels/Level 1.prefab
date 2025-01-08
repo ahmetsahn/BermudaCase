@@ -8500,7 +8500,7 @@ PrefabInstance:
     - target: {fileID: 4782801061217205971, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: gateModelConfig.BuffValue
-      value: -1
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7379741456069292068, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
@@ -8510,7 +8510,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: -1
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15096,7 +15096,7 @@ PrefabInstance:
     - target: {fileID: 1701654879762843718, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.419
+      value: 12.183
       objectReference: {fileID: 0}
     - target: {fileID: 1701654879762843718, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
@@ -15151,7 +15151,7 @@ PrefabInstance:
     - target: {fileID: 4782801061217205971, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: gateModelConfig.BuffValue
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7379741456069292068, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
@@ -15161,7 +15161,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: +1
+      value: +5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
