@@ -2,17 +2,16 @@
 using Cysharp.Threading.Tasks;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
-using UnityEngine;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
-    public class HandCollisionController : IDisposable
+    public class HandParentCollisionController : IDisposable
     {
-        private readonly HandView _view;
+        private readonly HandParentView _view;
         
-        private readonly HandModel _model;
-
-        public HandCollisionController(HandView view, HandModel model)
+        private readonly HandParentModel _model;
+        
+        public HandParentCollisionController(HandParentView view, HandParentModel model)
         {
             _view = view;
             _model = model;
@@ -22,10 +21,10 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void SubscribeEvents()
         {
-            _view.OnTriggerCollider += OnTriggerCollider;
+            _view.OnCollisionZone += OnCollisionZone;
         }
         
-        private void OnTriggerCollider(Collider collider)
+        private void OnCollisionZone()
         {
             ToggleColliderTemporarily().Forget();
         }
@@ -39,9 +38,9 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void UnsubscribeEvents()
         {
-            _view.OnTriggerCollider -= OnTriggerCollider;
+            _view.OnCollisionZone -= OnCollisionZone;
         }
-        
+
         public void Dispose()
         {
             UnsubscribeEvents();

@@ -9,7 +9,7 @@ namespace Runtime.Gameplay.KeyboardKey.Installer
     {
         public override void InstallBindings()
         {
-            Container.Bind<InteractableView>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<KeyboardKeyView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<KeyboardKeyModel>().AsSingle();
             
             Container.BindInterfacesTo<KeyboardKeyTouchController>().AsSingle();

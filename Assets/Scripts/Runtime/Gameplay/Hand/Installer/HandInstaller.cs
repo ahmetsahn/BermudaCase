@@ -17,7 +17,7 @@ namespace Runtime.Gameplay.Hand.Installer
             Container.Bind<HandModel>().AsSingle().WithArguments(handModelConfig);
             
             Container.BindInterfacesTo<HandCollisionController>().AsSingle();
-            Container.BindInterfacesTo<HandBuffController>().AsSingle();
+            Container.BindInterfacesTo<HandParentBuffController>().AsSingle();
         }
     }
 }

@@ -7,9 +7,9 @@ using Zenject;
 
 namespace Runtime.Gameplay.Zones
 {
-    public class FinishZone : MonoBehaviour, IInteractable
+    public class FinishZone : MonoBehaviour, IZone
     {
-        public Action OnInteract { get; set; }
+        public Action OnZoneEnter { get; set; }
         
         private SignalBus _signalBus;
         
@@ -26,7 +26,7 @@ namespace Runtime.Gameplay.Zones
 
         private void SubscribeEvents()
         {
-            OnInteract += OnInteractHandler;
+            OnZoneEnter += OnInteractHandler;
         }
 
         private void OnInteractHandler()
@@ -36,7 +36,7 @@ namespace Runtime.Gameplay.Zones
         
         private void UnsubscribeEvents()
         {
-            OnInteract -= OnInteractHandler;
+            OnZoneEnter -= OnInteractHandler;
         }
         
         private void OnDisable()

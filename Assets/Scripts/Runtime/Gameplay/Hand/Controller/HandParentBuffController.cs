@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
 using Runtime.Signals;
@@ -7,19 +8,22 @@ using Zenject;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
-    public class HandBuffController : IDisposable
+    public class HandParentBuffController : IDisposable
     {
-        private readonly HandView _view;
+        private readonly HandParentView _view;
         
-        private readonly HandModel _model;
+        private readonly HandParentModel _model;
         
         private readonly SignalBus _signalBus;
+
+        private readonly IInstantiator _instantiator;
         
-        public HandBuffController(HandView view, HandModel model, SignalBus signalBus)
+        public HandParentBuffController(HandParentView view, HandParentModel model, SignalBus signalBus, IInstantiator instantiator)
         {
             _view = view;
             _model = model;
             _signalBus = signalBus;
+            _instantiator = instantiator;
             
             SubscribeEvents();
         }
@@ -33,16 +37,15 @@ namespace Runtime.Gameplay.Hand.Controller
 
         private void OnPushRateBuff(PushRateBuffSignal signal)
         {
-            float currentSpeed = _view.Animator.GetFloat(_model.AnimationSpeedParameter);
-            Debug.Log("CurrentSpeed :" + currentSpeed);
-            float newSpeed = currentSpeed + _model.PushRateIncreaseAmount * signal.BuffValue;
-            _view.Animator.SetFloat(_model.AnimationSpeedParameter, newSpeed);
-            Debug.Log("NewSpeed: "+ _view.Animator.GetFloat(_model.AnimationSpeedParameter));
+            Debug.Log("Push rate buff applied");
         }
         
         private void OnWidthBuff(WidthBuffSignal signal)
         {
-            Debug.Log("Width buff applied");
+            for (int i = 0; i < signal.BuffValue; i++)
+            {
+                _model.Hands[i].SetActive(true);
+            }
         }
         
         private void OnLengthBuff(LengthBuffSignal signal)

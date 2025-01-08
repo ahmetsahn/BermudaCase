@@ -15,10 +15,10 @@ namespace Runtime.Gameplay.Hand.View
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IInteractable interactable))
+            if (other.TryGetComponent(out IKeyboardKey keyboardKey))
             {
-                interactable.OnInteract?.Invoke();
                 OnTriggerCollider?.Invoke(other);
+                keyboardKey.OnFeedBack?.Invoke();
             }
         }
     }

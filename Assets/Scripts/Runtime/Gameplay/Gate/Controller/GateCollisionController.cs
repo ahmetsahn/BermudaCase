@@ -21,10 +21,10 @@ namespace Runtime.Gameplay.Gate.Controller
         
         private void SubscribeEvents()
         {
-            _view.OnInteract += OnInteract;
+            _view.OnZoneEnter += OnZoneEnter;
         }
         
-        private void OnInteract()
+        private void OnZoneEnter()
         {
             _view.BoxCollider.enabled = false;
             _model.BaseBuff.ApplyBuff(_model.BuffValue);
@@ -32,7 +32,7 @@ namespace Runtime.Gameplay.Gate.Controller
         
         private void UnsubscribeEvents()
         {
-            _view.OnInteract -= OnInteract;
+            _view.OnZoneEnter -= OnZoneEnter;
         }
 
         public void Dispose()

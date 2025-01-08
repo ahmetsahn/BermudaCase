@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace Runtime.Gameplay.Gate.View
 {
-    public class GateView : MonoBehaviour, IInteractable
+    public class GateView : MonoBehaviour, IZone
     {
         public BoxCollider BoxCollider;
-        public Action OnInteract { get; set; }
+        
+        public Action OnZoneEnter { get; set; }
     }
 }

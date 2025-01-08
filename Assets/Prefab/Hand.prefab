@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 9201339545379961583}
   - component: {fileID: 1401659967519863223}
   m_Layer: 0
-  m_Name: buttonpush_hand-anim01-export08
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.03, y: 0.1, z: 0.03}
-  m_Center: {x: -0.006, y: 0.06, z: 0.046}
+  m_Center: {x: -0.006, y: 0.062, z: 0.046}
 --- !u!54 &4669518511145166987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -423,7 +423,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handModelConfig:
     ColliderToggleDelay: 0.1
-    PushRateIncreaseAmount: 0.5
 --- !u!114 &1401659967519863223
 MonoBehaviour:
   m_ObjectHideFlags: 0

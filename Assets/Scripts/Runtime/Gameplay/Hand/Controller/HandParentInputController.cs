@@ -43,8 +43,7 @@ namespace Runtime.Gameplay.Hand.Controller
             
             _inputHandler.GetSwipeDelta();
         }
-
-
+        
         public void Tick()
         {
             if (_inputHandler.TapToStart() && _gameManager.GetGameState().Equals(GameState.ReadyToStart))
