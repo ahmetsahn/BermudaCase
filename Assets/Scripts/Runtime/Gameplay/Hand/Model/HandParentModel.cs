@@ -22,8 +22,6 @@ namespace Runtime.Gameplay.Hand.Model
         public int MaxWidth;
         public int MaxLength;
         
-        public List<Transform> Hands = new List<Transform>();
-        
         public GameObject HandPrefab;
         
         public string PushAnimationSpeedParameter = "PushRateSpeed";

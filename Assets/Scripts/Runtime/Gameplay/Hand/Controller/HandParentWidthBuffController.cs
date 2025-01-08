@@ -25,14 +25,9 @@ namespace Runtime.Gameplay.Hand.Controller
             _signalBus = signalBus;
             _instantiator = instantiator;
             
-            Initialize();
             SubscribeEvents();
         }
         
-        private void Initialize()
-        {
-            _model.Hands.Add(_view.HandParenTransform.GetChild(0));
-        }
         
         private void SubscribeEvents()
         {
@@ -41,32 +36,44 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void OnWidthBuff(WidthBuffSignal signal)
         {
-            GenerateHands(signal.BuffValue);
-            UpdateHandPositions();
+            if(_model.CurrentWidth > _model.MaxWidth)
+            {
+                _model.CurrentWidth = _model.MaxWidth;
+            }
+            
+            for(int i = 0; i<_model.CurrentLength; i++)
+            {
+                GenerateHands(signal.BuffValue, i);
+                UpdateHandPositions(i);
+            }
+            
+            _model.CurrentWidth += signal.BuffValue;
         }
         
-        private void GenerateHands(int count)
+        private void GenerateHands(int count, int index)
         {
+            if (count + _model.CurrentWidth > _model.MaxWidth)
+            {
+                count = _model.MaxWidth - _model.CurrentWidth;
+            }
+
             for (int i = 0; i < count; i++)
             {
-                Transform newHand = _instantiator.InstantiatePrefab(_model.HandPrefab, _view.HandParenTransform).transform;
-                _model.Hands.Add(newHand);
+                _instantiator.InstantiatePrefab(_model.HandPrefab, _view.LineTransforms[index]);
             }
         }
         
-        private void UpdateHandPositions()
+        private void UpdateHandPositions(int index)
         {
-            int count = _model.Hands.Count; // Mevcut el sayısı
-            float centerOffset = (count - 1) * _model.DistanceBetweenHands / 2; // Ellerin merkezden kaydırılma mesafesi
+            int count = _view.LineTransforms[index].childCount;
+            float centerOffset = (count - 1) * _model.DistanceBetweenHands / 2;
 
-            for (int i = 0; i < _model.Hands.Count; i++)
+            for (int i = 0; i < _view.LineTransforms[index].childCount; i++)
             {
-                // Hedef pozisyonu hesapla
                 float targetX = (i * _model.DistanceBetweenHands) - centerOffset;
-                Vector3 targetLocalPosition = new Vector3(targetX, _model.Hands[1].localPosition.y, _model.Hands[i].localPosition.z);
-
-                // DOTween ile hareketi yumuşak yap
-                _model.Hands[i].DOLocalMove(targetLocalPosition, _model.ChildHandMoveDuration);
+                Vector3 targetLocalPosition = new Vector3(targetX, _view.LineTransforms[index].GetChild(0).localPosition.y, 0);
+                
+                _view.LineTransforms[index].GetChild(i).DOLocalMove(targetLocalPosition, _model.ChildHandMoveDuration);
             }
         }
         

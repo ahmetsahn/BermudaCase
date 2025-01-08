@@ -6,7 +6,7 @@ namespace Runtime.Gameplay.Hand.View
 {
     public class HandParentView : MonoBehaviour
     {
-        public Transform HandParenTransform;
+        public Transform[] LineTransforms;
         
         public BoxCollider BoxCollider;
         
