@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Runtime.Gameplay.Hand.Model
@@ -14,13 +15,16 @@ namespace Runtime.Gameplay.Hand.Model
         public float CurrentPushRateSpeed;
         public float MaxPushRateSpeed;
         public float DistanceBetweenHands;
+        public float ChildHandMoveDuration;
         
         public int CurrentWidth;
         public int CurrentLength;
         public int MaxWidth;
         public int MaxLength;
         
-        public GameObject[] Hands;
+        public List<Transform> Hands = new List<Transform>();
+        
+        public GameObject HandPrefab;
         
         public string PushAnimationSpeedParameter = "PushRateSpeed";
         
@@ -37,11 +41,12 @@ namespace Runtime.Gameplay.Hand.Model
             CurrentPushRateSpeed = config.DefaultPushRateSpeed;
             MaxPushRateSpeed = config.MaxPushRateSpeed;
             DistanceBetweenHands = config.DistanceBetweenHands;
+            ChildHandMoveDuration = config.ChildHandMoveDuration;
             CurrentWidth = config.DefaultWidth;
             CurrentLength = config.DefaultLength;
             MaxWidth = config.MaxWidth;
             MaxLength = config.MaxLength;
-            Hands = config.Hands;
+            HandPrefab = config.HandPrefab;
         }
     }
     
@@ -57,12 +62,13 @@ namespace Runtime.Gameplay.Hand.Model
         public float DefaultPushRateSpeed;
         public float MaxPushRateSpeed;
         public float DistanceBetweenHands;
+        public float ChildHandMoveDuration;
         
         public int MaxWidth;
         public int MaxLength;
         public int DefaultWidth;
         public int DefaultLength;
         
-        public GameObject[] Hands;
+        public GameObject HandPrefab;
     }
 }

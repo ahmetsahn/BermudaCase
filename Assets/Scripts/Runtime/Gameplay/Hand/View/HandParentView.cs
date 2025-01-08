@@ -6,6 +6,8 @@ namespace Runtime.Gameplay.Hand.View
 {
     public class HandParentView : MonoBehaviour
     {
+        public Transform HandParenTransform;
+        
         public BoxCollider BoxCollider;
         
         public Action<Vector2> OnSwipe;

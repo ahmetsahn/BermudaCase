@@ -19,6 +19,9 @@ namespace Runtime.Gameplay.Hand.Installer
             
             Container.BindInterfacesTo<HandParentMovementController>().AsSingle();
             Container.BindInterfacesTo<HandParentInputController>().AsSingle();
+            Container.BindInterfacesTo<HandParentPushRateBuff>().AsSingle();
+            Container.BindInterfacesTo<HandParentWidthBuffController>().AsSingle();
+            Container.BindInterfacesTo<HandParentLengthBuffController>().AsSingle();
             
 #if UNITY_ANDROID || UNITY_IOS
             Container.Bind<IInputHandler>().To<TouchInputHandler>().AsSingle();
