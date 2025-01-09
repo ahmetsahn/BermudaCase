@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using AYellowpaper.SerializedCollections;
 using Runtime.Enums;
 using Runtime.Signals;

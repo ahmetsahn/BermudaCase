@@ -1,26 +1,32 @@
 ﻿using System;
-using Runtime.Gameplay.Buff;
+using Runtime.Enums;
+using UnityEngine;
 
 namespace Runtime.Gameplay.Gate.Model
 {
     public class GateModel
     {
-        public BaseBuff BaseBuff;
+        public BuffType BuffType;
 
         public int BuffValue;
+
+        public Color FeedBackColor;
         
         public GateModel(GateModelConfig config)
         {
-            BaseBuff = config.BaseBuff;
+            BuffType = config.BuffType;
             BuffValue = config.BuffValue;
+            FeedBackColor = config.FeedBackColor;
         }
     }
     
     [Serializable]
     public struct GateModelConfig
     {
-        public BaseBuff BaseBuff;
+        public BuffType BuffType;
         
         public int BuffValue;
+
+        public Color FeedBackColor;
     }
 }

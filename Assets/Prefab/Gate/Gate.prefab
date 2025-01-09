@@ -53,7 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4db88b1c964af18de05f0a026dea21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GradientSprite: {fileID: 1351306896896438468}
   BoxCollider: {fileID: 5888744441947226896}
+  BuffValueText: {fileID: 4624457348764288649}
 --- !u!114 &8213609821944013088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +69,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateModelConfig:
-    BaseBuff: {fileID: 0}
+    BuffType: 0
     BuffValue: 0
+    FeedBackColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
 --- !u!114 &2480195946538616597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,7 +545,7 @@ GameObject:
   - component: {fileID: 4137302746704204055}
   - component: {fileID: 4624457348764288649}
   m_Layer: 0
-  m_Name: BuffAmountText
+  m_Name: BuffValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

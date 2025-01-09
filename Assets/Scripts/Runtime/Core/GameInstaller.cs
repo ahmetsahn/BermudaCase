@@ -16,6 +16,10 @@ namespace Runtime.Core
         
         [SerializeField]
         private UIManagerConfig uiManagerConfig;
+
+        [SerializeField] 
+        private BuffManagerConfig buffManagerConfig;
+        
         public override void InstallBindings()
         {
             BindServices();
@@ -28,7 +32,7 @@ namespace Runtime.Core
             
             Container.BindInterfacesTo<LevelLoader>().AsSingle().WithArguments(levelLoaderConfig);
             Container.BindInterfacesTo<UIManager>().AsSingle().WithArguments(uiManagerConfig);
-            
+            Container.BindInterfacesTo<BuffManager>().AsSingle().WithArguments(buffManagerConfig);
         }
         
         private void BindSignals()
@@ -45,6 +49,7 @@ namespace Runtime.Core
             Container.DeclareSignal<PushRateBuffSignal>();
             Container.DeclareSignal<WidthBuffSignal>();
             Container.DeclareSignal<LengthBuffSignal>();
+            Container.DeclareSignal<ApplyBuffSignal>();
         }
     }
 }

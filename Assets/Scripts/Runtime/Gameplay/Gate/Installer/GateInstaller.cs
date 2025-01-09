@@ -14,6 +14,8 @@ namespace Runtime.Gameplay.Gate.Installer
         {
             Container.Bind<GateView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<GateModel>().AsSingle().WithArguments(gateModelConfig);
+            
+            Container.BindInterfacesTo<GateValueTextUpdateController>().AsSingle();
             Container.BindInterfacesTo<GateCollisionController>().AsSingle();
         }
     }
