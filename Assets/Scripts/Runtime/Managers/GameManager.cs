@@ -31,10 +31,10 @@ namespace Runtime.Managers
         private void SubscribeEvents()
         {
             _signalBus.Subscribe<SetGameStateSignal>(OnSetGameState);
-            _signalBus.Subscribe<CompleteLevelSignal>(OnCompleteLevel);
+            _signalBus.Subscribe<NextLevelSignal>(OnNextLevel);
         }
         
-        private void OnCompleteLevel(CompleteLevelSignal signal)
+        private void OnNextLevel(NextLevelSignal signal)
         {
             _signalBus.Fire(new DestroyCurrentLevelSignal());
             IncreaseCurrentLevelIndex();
@@ -89,7 +89,7 @@ namespace Runtime.Managers
         private void UnsubscribeEvents()
         {
             _signalBus.Unsubscribe<SetGameStateSignal>(OnSetGameState);
-            _signalBus.Unsubscribe<CompleteLevelSignal>(OnCompleteLevel);
+            _signalBus.Unsubscribe<NextLevelSignal>(OnNextLevel);
         }
 
         public void Dispose()

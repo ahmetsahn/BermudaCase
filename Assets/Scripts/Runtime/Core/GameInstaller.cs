@@ -36,7 +36,7 @@ namespace Runtime.Core
             SignalBusInstaller.Install(Container);
             
             Container.DeclareSignal<SetGameStateSignal>();
-            Container.DeclareSignal<CompleteLevelSignal>();
+            Container.DeclareSignal<NextLevelSignal>();
             Container.DeclareSignal<LoadLevelSignal>();
             Container.DeclareSignal<DestroyCurrentLevelSignal>();
             Container.DeclareSignal<OpenUIPanelSignal>();

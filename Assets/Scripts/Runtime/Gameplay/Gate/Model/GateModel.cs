@@ -1,6 +1,5 @@
 ﻿using System;
 using Runtime.Gameplay.Buff;
-using UnityEngine.Serialization;
 
 namespace Runtime.Gameplay.Gate.Model
 {

@@ -5,24 +5,24 @@ namespace Runtime.InputHandler
 {
     public class MouseInputHandler : IInputHandler
     {
-        private Vector2 startMousePosition;
-        private Vector2 swipeDelta;
+        private Vector2 _startMousePosition;
+        private Vector2 _swipeDelta;
 
         public Vector2 GetSwipeDelta()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                startMousePosition = Input.mousePosition;
+                _startMousePosition = Input.mousePosition;
             }
             else if (Input.GetMouseButton(0))
             {
-                swipeDelta = (Vector2)Input.mousePosition - startMousePosition;
+                _swipeDelta = (Vector2)Input.mousePosition - _startMousePosition;
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                swipeDelta = Vector2.zero;
+                _swipeDelta = Vector2.zero;
             }
-            return swipeDelta;
+            return _swipeDelta;
         }
 
         public bool IsInputActive()

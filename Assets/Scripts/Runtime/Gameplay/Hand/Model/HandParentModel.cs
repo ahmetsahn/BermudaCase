@@ -10,26 +10,25 @@ namespace Runtime.Gameplay.Hand.Model
         public float MaxX;
         public float HorizontalSpeed;
         public float ForwardSpeed;
-        public float ColliderToggleDelay;
         public float PushRateIncreaseAmount;
-        public float CurrentPushRateSpeed;
+        public float MinPushRateSpeed;
         public float MaxPushRateSpeed;
+        public float CurrentPushRateSpeed;
         public float DistanceBetweenHands;
         public float ChildHandMoveDuration;
         
-        public int CurrentWidth;
-        public int CurrentLength;
         public int MaxWidth;
         public int MaxLength;
-        public int MinPushRateSpeed;
         public int MinWidth;
         public int MinLength;
+        public int CurrentWidth;
+        public int CurrentLength;
         
         public GameObject HandPrefab;
         
-        public string PushAnimationSpeedParameter = "PushRateSpeed";
-        
         public Vector2 SwipeDelta;
+        
+        public string PushAnimationSpeedParameter = "PushRateSpeed";
         
         public HandParentModel(HandParentModelConfig config)
         {
@@ -37,16 +36,18 @@ namespace Runtime.Gameplay.Hand.Model
             MaxX = config.MaxX;
             HorizontalSpeed = config.HorizontalSpeed;
             ForwardSpeed = config.ForwardSpeed;
-            ColliderToggleDelay = config.ColliderToggleDelay;
             PushRateIncreaseAmount = config.PushRateIncreaseAmount;
-            CurrentPushRateSpeed = config.DefaultPushRateSpeed;
+            MinPushRateSpeed = config.MinPushRateSpeed;
             MaxPushRateSpeed = config.MaxPushRateSpeed;
+            CurrentPushRateSpeed = config.MinPushRateSpeed;
             DistanceBetweenHands = config.DistanceBetweenHands;
             ChildHandMoveDuration = config.ChildHandMoveDuration;
-            CurrentWidth = config.DefaultWidth;
-            CurrentLength = config.DefaultLength;
             MaxWidth = config.MaxWidth;
             MaxLength = config.MaxLength;
+            MinWidth = config.MinWidth;
+            MinLength = config.MinLength;
+            CurrentWidth = config.MinWidth;
+            CurrentLength = config.MinLength;
             HandPrefab = config.HandPrefab;
         }
     }
@@ -58,17 +59,16 @@ namespace Runtime.Gameplay.Hand.Model
         public float MaxX;  
         public float HorizontalSpeed;
         public float ForwardSpeed;
-        public float ColliderToggleDelay;
         public float PushRateIncreaseAmount;
-        public float DefaultPushRateSpeed;
+        public float MinPushRateSpeed;
         public float MaxPushRateSpeed;
         public float DistanceBetweenHands;
         public float ChildHandMoveDuration;
         
         public int MaxWidth;
         public int MaxLength;
-        public int DefaultWidth;
-        public int DefaultLength;
+        public int MinWidth;
+        public int MinLength;
         
         public GameObject HandPrefab;
     }

@@ -1,6 +1,6 @@
 ﻿namespace Runtime.Signals
 {
-    public readonly struct CompleteLevelSignal
+    public readonly struct NextLevelSignal
     {
         
     }

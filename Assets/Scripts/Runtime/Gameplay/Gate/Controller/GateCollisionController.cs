@@ -1,7 +1,6 @@
 ﻿using System;
 using Runtime.Gameplay.Gate.Model;
 using Runtime.Gameplay.Gate.View;
-using UnityEngine;
 
 namespace Runtime.Gameplay.Gate.Controller
 {

@@ -212,16 +212,15 @@ MonoBehaviour:
     MaxX: 2.1
     HorizontalSpeed: 0.0035
     ForwardSpeed: 2
-    ColliderToggleDelay: 1
     PushRateIncreaseAmount: 0.5
-    DefaultPushRateSpeed: 1.3334
+    MinPushRateSpeed: 1.334
     MaxPushRateSpeed: 0.2
     DistanceBetweenHands: 0.68
     ChildHandMoveDuration: 0.25
     MaxWidth: 5
     MaxLength: 5
-    DefaultWidth: 1
-    DefaultLength: 1
+    MinWidth: 1
+    MinLength: 1
     HandPrefab: {fileID: 5827169299386555449, guid: f3bbb677a5506744787b41a0e372095d,
       type: 3}
 --- !u!114 &3481670682850823932

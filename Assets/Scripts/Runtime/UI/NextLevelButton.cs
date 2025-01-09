@@ -30,7 +30,7 @@ namespace Runtime.UI
         
         private void OnButtonClicked()
         {
-            _signalBus.Fire(new CompleteLevelSignal());
+            _signalBus.Fire(new NextLevelSignal());
         }
         
         private void UnsubscribeEvents()

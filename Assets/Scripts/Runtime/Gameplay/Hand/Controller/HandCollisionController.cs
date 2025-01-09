@@ -2,7 +2,6 @@
 using Cysharp.Threading.Tasks;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
-using UnityEngine;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
@@ -25,7 +24,7 @@ namespace Runtime.Gameplay.Hand.Controller
             _view.OnTriggerCollider += OnTriggerCollider;
         }
         
-        private void OnTriggerCollider(Collider collider)
+        private void OnTriggerCollider()
         {
             ToggleColliderTemporarily().Forget();
         }

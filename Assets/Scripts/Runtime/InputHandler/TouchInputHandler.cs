@@ -1,32 +1,40 @@
-﻿using Runtime.Core.Interface;
+﻿using System;
+using Runtime.Core.Interface;
 using UnityEngine;
 
 namespace Runtime.InputHandler
 {
     public class TouchInputHandler : IInputHandler
     {
-        private Vector2 startTouchPosition;
-        private Vector2 swipeDelta;
+        private Vector2 _startTouchPosition;
+        private Vector2 _swipeDelta;
 
         public Vector2 GetSwipeDelta()
         {
-            if (Input.touchCount > 0)
+            if (Input.touchCount <= 0)
             {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    startTouchPosition = touch.position;
-                }
-                else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-                {
-                    swipeDelta = touch.position - startTouchPosition;
-                }
-                else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                {
-                    swipeDelta = Vector2.zero;
-                }
+                return _swipeDelta;
             }
-            return swipeDelta;
+            
+            Touch touch = Input.GetTouch(0);
+            
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    _startTouchPosition = touch.position;
+                    break;
+                case TouchPhase.Moved:
+                case TouchPhase.Stationary:
+                    _swipeDelta = touch.position - _startTouchPosition;
+                    break;
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    _swipeDelta = Vector2.zero;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            return _swipeDelta;
         }
 
         public bool IsInputActive()

@@ -1,5 +1,4 @@
 ﻿using Runtime.Signals;
-using UnityEngine;
 
 namespace Runtime.Gameplay.Buff
 {

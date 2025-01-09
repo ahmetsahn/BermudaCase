@@ -1,6 +1,4 @@
 ﻿using Runtime.Signals;
-using UnityEngine;
-using Zenject;
 
 namespace Runtime.Gameplay.Buff
 {

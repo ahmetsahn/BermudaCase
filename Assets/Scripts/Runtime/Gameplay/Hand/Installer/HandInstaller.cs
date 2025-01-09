@@ -1,5 +1,4 @@
-﻿using System;
-using Runtime.Gameplay.Hand.Controller;
+﻿using Runtime.Gameplay.Hand.Controller;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
 using UnityEngine;
