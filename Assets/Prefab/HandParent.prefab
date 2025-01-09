@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dcb7d1390a4b0ca1f93c70bd3a4bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 3313842157992016424}
   LineTransforms:
   - {fileID: 1145327356077908566}
   - {fileID: 6753511398051858379}
@@ -213,8 +214,8 @@ MonoBehaviour:
     ForwardSpeed: 2
     ColliderToggleDelay: 1
     PushRateIncreaseAmount: 0.5
-    DefaultPushRateSpeed: 1
-    MaxPushRateSpeed: 0.02
+    DefaultPushRateSpeed: 1.3334
+    MaxPushRateSpeed: 0.2
     DistanceBetweenHands: 0.68
     ChildHandMoveDuration: 0.25
     MaxWidth: 5
@@ -360,6 +361,12 @@ PrefabInstance:
 --- !u!4 &1145327356077908566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7379615938571773851, guid: 9409c2925d402e045af2b466a3069854,
+    type: 3}
+  m_PrefabInstance: {fileID: 7605643748674766285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3313842157992016424 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4931878458784350181, guid: 9409c2925d402e045af2b466a3069854,
     type: 3}
   m_PrefabInstance: {fileID: 7605643748674766285}
   m_PrefabAsset: {fileID: 0}

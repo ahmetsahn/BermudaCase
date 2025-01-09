@@ -12,8 +12,11 @@ namespace Runtime.Gameplay.Hand.Controller
     public class HandParentLengthBuffController : IDisposable
     {
         private readonly HandParentView _view;
+        
         private readonly HandParentModel _model;
+        
         private readonly SignalBus _signalBus;
+        
         private readonly IInstantiator _instantiator;
 
         public HandParentLengthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus, IInstantiator instantiator)
@@ -35,7 +38,7 @@ namespace Runtime.Gameplay.Hand.Controller
             else if (buffValue < 0)
                 RemoveHands(-buffValue);
 
-            _model.CurrentLength = Mathf.Clamp(_model.CurrentLength, 1, _model.MaxLength);
+            _model.CurrentLength = Mathf.Clamp(_model.CurrentLength, _model.MinLength, _model.MaxLength);
         }
 
         private void AddHands(int buffValue)
@@ -52,6 +55,17 @@ namespace Runtime.Gameplay.Hand.Controller
             _model.CurrentLength += countToAdd;
         }
 
+        private void CreateHandsAtIndex(int index)
+        {
+            if (index < 0 || index >= _view.LineTransforms.Length) return;
+
+            Transform lineTransform = _view.LineTransforms[index];
+            for (int i = 0; i < _model.CurrentWidth; i++)
+            {
+                _instantiator.InstantiatePrefab(_model.HandPrefab, lineTransform);
+            }
+        }
+        
         private void RemoveHands(int buffValue)
         {
             int removableCount = Mathf.Min(buffValue, _model.CurrentLength - 1);
@@ -63,18 +77,7 @@ namespace Runtime.Gameplay.Hand.Controller
 
             _model.CurrentLength -= removableCount;
         }
-
-        private void CreateHandsAtIndex(int index)
-        {
-            if (index < 0 || index >= _view.LineTransforms.Length) return;
-
-            Transform lineTransform = _view.LineTransforms[index];
-            for (int i = 0; i < _model.CurrentWidth; i++)
-            {
-                _instantiator.InstantiatePrefab(_model.HandPrefab, lineTransform);
-            }
-        }
-
+        
         private void DestroyHandsAtIndex(int index)
         {
             if (index < 1 || index >= _view.LineTransforms.Length) return;

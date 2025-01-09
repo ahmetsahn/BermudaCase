@@ -8498,21 +8498,21 @@ PrefabInstance:
         type: 3}
       propertyPath: gateModelConfig.BaseBuff
       value: 
-      objectReference: {fileID: 6875808765761730918}
+      objectReference: {fileID: 8779512319686011767}
     - target: {fileID: 4782801061217205971, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: gateModelConfig.BuffValue
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 7379741456069292068, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: WIDTH
+      value: PUSH RATE
       objectReference: {fileID: 0}
     - target: {fileID: 8326638738907978106, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23757,21 +23757,21 @@ PrefabInstance:
         type: 3}
       propertyPath: gateModelConfig.BaseBuff
       value: 
-      objectReference: {fileID: 6875808765761730918}
+      objectReference: {fileID: 8779512319686011767}
     - target: {fileID: 4782801061217205971, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: gateModelConfig.BuffValue
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7379741456069292068, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: WIDTH
+      value: PUSH RATE
       objectReference: {fileID: 0}
     - target: {fileID: 8326638738907978106, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: +3
+      value: +5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

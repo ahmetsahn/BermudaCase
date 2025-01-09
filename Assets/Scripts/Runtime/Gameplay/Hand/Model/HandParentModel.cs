@@ -21,6 +21,9 @@ namespace Runtime.Gameplay.Hand.Model
         public int CurrentLength;
         public int MaxWidth;
         public int MaxLength;
+        public int MinPushRateSpeed;
+        public int MinWidth;
+        public int MinLength;
         
         public GameObject HandPrefab;
         

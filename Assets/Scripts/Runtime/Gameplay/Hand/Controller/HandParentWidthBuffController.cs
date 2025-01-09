@@ -13,8 +13,11 @@ namespace Runtime.Gameplay.Hand.Controller
     public class HandParentWidthBuffController : IDisposable
     {
         private readonly HandParentView _view;
+        
         private readonly HandParentModel _model;
+        
         private readonly SignalBus _signalBus;
+        
         private readonly IInstantiator _instantiator;
 
         public HandParentWidthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus, IInstantiator instantiator)
@@ -59,7 +62,7 @@ namespace Runtime.Gameplay.Hand.Controller
 
         private void ClampModelWidth()
         {
-            _model.CurrentWidth = Mathf.Clamp(_model.CurrentWidth, 1, _model.MaxWidth);
+            _model.CurrentWidth = Mathf.Clamp(_model.CurrentWidth, _model.MinWidth, _model.MaxWidth);
         }
 
         private void AddHand(int lineIndex)
