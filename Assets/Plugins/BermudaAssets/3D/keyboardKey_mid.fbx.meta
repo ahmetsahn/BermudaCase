@@ -3,7 +3,12 @@ guid: 511f4920b262ad34c81056dbab2090c4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: keyboardKey_mid
+    second: {fileID: 2100000, guid: 2d1a4688606525740ba9baf25569e9b9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

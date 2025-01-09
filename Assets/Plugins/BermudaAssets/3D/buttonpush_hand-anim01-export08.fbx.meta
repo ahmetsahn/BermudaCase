@@ -3,7 +3,27 @@ guid: 1543edc39310c3b42a98894acc80c92f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue
+    second: {fileID: 2100000, guid: 506377ad5a59aea46a5facd34e7f2596, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ten
+    second: {fileID: 2100000, guid: 0ff4533c971f4ad48b7dd8d8d6755272, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tirnak
+    second: {fileID: 2100000, guid: a711aa9b27123a24b8ef787ff34c28fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: 9d5f6521a1006ed4ca00470a012b36e1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
