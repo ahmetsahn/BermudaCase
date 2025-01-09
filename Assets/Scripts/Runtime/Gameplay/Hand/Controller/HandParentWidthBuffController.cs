@@ -1,4 +1,5 @@
 ﻿using System;
+using Ahmet.ObjectPool;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Runtime.Gameplay.Hand.Model;
@@ -17,15 +18,12 @@ namespace Runtime.Gameplay.Hand.Controller
         private readonly HandParentModel _model;
         
         private readonly SignalBus _signalBus;
-        
-        private readonly IInstantiator _instantiator;
 
-        public HandParentWidthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus, IInstantiator instantiator)
+        public HandParentWidthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus)
         {
             _view = view;
             _model = model;
             _signalBus = signalBus;
-            _instantiator = instantiator;
 
             SubscribeEvents();
         }
@@ -35,23 +33,21 @@ namespace Runtime.Gameplay.Hand.Controller
             _signalBus.Subscribe<WidthBuffSignal>(OnWidthBuff);
         }
 
-        private async void OnWidthBuff(WidthBuffSignal signal)
+        private void OnWidthBuff(WidthBuffSignal signal)
         {
-            ClampModelWidth();
-
-            int iterations = Mathf.Abs(signal.BuffValue);
+            int availableSpace = _model.MaxWidth - _model.CurrentWidth;
+            int countToAdd = Mathf.Min(signal.BuffValue, availableSpace);
+            
             bool isBuff = signal.BuffValue > 0;
 
             for (int i = 0; i < _model.CurrentLength; i++)
             {
-                for (int j = 0; j < iterations; j++)
+                for (int j = 0; j < countToAdd; j++)
                 {
                     if (isBuff)
                         AddHand(i);
                     else
                         RemoveHand(i);
-
-                    await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
                 }
 
                 UpdateHandPositions(i);
@@ -60,16 +56,9 @@ namespace Runtime.Gameplay.Hand.Controller
             AdjustModelWidth(signal.BuffValue);
         }
 
-        private void ClampModelWidth()
-        {
-            _model.CurrentWidth = Mathf.Clamp(_model.CurrentWidth, _model.MinWidth, _model.MaxWidth);
-        }
-
         private void AddHand(int lineIndex)
         {
-            if (_model.CurrentWidth >= _model.MaxWidth) return;
-
-            _instantiator.InstantiatePrefab(_model.HandPrefab, _view.LineTransforms[lineIndex]);
+            ObjectPoolManager.SpawnObjectForZenject(_model.HandPrefab, _view.LineTransforms[lineIndex]);
         }
 
         private void RemoveHand(int lineIndex)
@@ -78,7 +67,7 @@ namespace Runtime.Gameplay.Hand.Controller
             if (lineTransform.childCount > 1)
             {
                 var lastChild = lineTransform.GetChild(lineTransform.childCount - 1);
-                Object.Destroy(lastChild.gameObject);
+                ObjectPoolManager.ReturnObjectToPool(lastChild.gameObject);
             }
         }
 

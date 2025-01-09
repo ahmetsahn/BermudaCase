@@ -210,7 +210,7 @@ MonoBehaviour:
   handParentModelConfig:
     MinX: -2.1
     MaxX: 2.1
-    HorizontalSpeed: 0.0035
+    HorizontalSpeed: 0.005
     ForwardSpeed: 2
     PushRateIncreaseAmount: 0.5
     MinPushRateSpeed: 1.334

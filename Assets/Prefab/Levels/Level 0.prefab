@@ -5566,7 +5566,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: -4
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7524,7 +7524,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: -4
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14443,7 +14443,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: +1
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17078,7 +17078,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: +5
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20805,7 +20805,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -650225224453114812, guid: c9cf15dd3a0c5d14b9f48ac2ed4d0b86,
+        type: 2}
     - target: {fileID: 1701654879762843718, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20889,7 +20890,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: ba02a7a1cffda944197476e57b68ad10,
         type: 3}
       propertyPath: m_text
-      value: +5
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25535,7 +25536,7 @@ PrefabInstance:
     - target: {fileID: 8326638738907978106, guid: d083cd53dfc9caa4cb7e9c437def3fd6,
         type: 3}
       propertyPath: m_text
-      value: -4
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

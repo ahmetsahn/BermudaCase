@@ -1,4 +1,5 @@
 ﻿using System;
+using Ahmet.ObjectPool;
 using DG.Tweening;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
@@ -16,15 +17,12 @@ namespace Runtime.Gameplay.Hand.Controller
         private readonly HandParentModel _model;
         
         private readonly SignalBus _signalBus;
-        
-        private readonly IInstantiator _instantiator;
 
-        public HandParentLengthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus, IInstantiator instantiator)
+        public HandParentLengthBuffController(HandParentView view, HandParentModel model, SignalBus signalBus)
         {
             _view = view;
             _model = model;
             _signalBus = signalBus;
-            _instantiator = instantiator;
 
             _signalBus.Subscribe<LengthBuffSignal>(HandleLengthBuff);
         }
@@ -62,7 +60,7 @@ namespace Runtime.Gameplay.Hand.Controller
             Transform lineTransform = _view.LineTransforms[index];
             for (int i = 0; i < _model.CurrentWidth; i++)
             {
-                _instantiator.InstantiatePrefab(_model.HandPrefab, lineTransform);
+                ObjectPoolManager.SpawnObjectForZenject(_model.HandPrefab, lineTransform);
             }
         }
         
@@ -85,7 +83,7 @@ namespace Runtime.Gameplay.Hand.Controller
             Transform lineTransform = _view.LineTransforms[index];
             for (int i = lineTransform.childCount - 1; i >= 0; i--)
             {
-                Object.Destroy(lineTransform.GetChild(i).gameObject);
+                ObjectPoolManager.ReturnObjectToPool(lineTransform.GetChild(i).gameObject);
             }
         }
 

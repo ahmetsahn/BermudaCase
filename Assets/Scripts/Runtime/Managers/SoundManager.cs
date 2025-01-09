@@ -40,11 +40,11 @@ namespace Runtime.Managers
                 _effectAudioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
                 return;
             }
-            
-          
-            _buttonAudioSource.pitch = Random.Range(0.95f, 1.05f);
-            _buttonAudioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
-            
+
+            if (!_buttonAudioSource.isPlaying)
+            {
+                _buttonAudioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
+            }
         }
 
         private void UnsubscribeEvents()

@@ -1,4 +1,5 @@
-﻿using Runtime.Managers;
+﻿using Ahmet.ObjectPool;
+using Runtime.Managers;
 using Runtime.Signals;
 using Runtime.UI;
 using UnityEngine;
@@ -31,6 +32,8 @@ namespace Runtime.Core
         
         private void BindServices()
         {
+            Container.Bind<ObjectPoolManager>().AsSingle();
+                
             Container.BindInterfacesTo<LevelLoader>().AsSingle().WithArguments(levelLoaderConfig);
             Container.BindInterfacesTo<UIManager>().AsSingle().WithArguments(uiManagerConfig);
             Container.BindInterfacesTo<BuffManager>().AsSingle().WithArguments(buffManagerConfig);
@@ -55,6 +58,7 @@ namespace Runtime.Core
             Container.DeclareSignal<LengthBuffSignal>();
             Container.DeclareSignal<ApplyBuffSignal>();
             Container.DeclareSignal<PlayAudioClipSignal>();
+            Container.DeclareSignal<SpawnObjectSignal>();
         }
     }
 }
