@@ -19,6 +19,9 @@ namespace Runtime.Core
 
         [SerializeField] 
         private BuffManagerConfig buffManagerConfig;
+
+        [SerializeField] 
+        private SoundManagerConfig soundManagerConfig;
         
         public override void InstallBindings()
         {
@@ -28,11 +31,12 @@ namespace Runtime.Core
         
         private void BindServices()
         {
-            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().WithArguments(gameManagerConfig);
-            
             Container.BindInterfacesTo<LevelLoader>().AsSingle().WithArguments(levelLoaderConfig);
             Container.BindInterfacesTo<UIManager>().AsSingle().WithArguments(uiManagerConfig);
             Container.BindInterfacesTo<BuffManager>().AsSingle().WithArguments(buffManagerConfig);
+            Container.BindInterfacesTo<SoundManager>().AsSingle().WithArguments(soundManagerConfig);
+            
+            Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().WithArguments(gameManagerConfig);
         }
         
         private void BindSignals()
@@ -50,6 +54,7 @@ namespace Runtime.Core
             Container.DeclareSignal<WidthBuffSignal>();
             Container.DeclareSignal<LengthBuffSignal>();
             Container.DeclareSignal<ApplyBuffSignal>();
+            Container.DeclareSignal<PlayAudioClipSignal>();
         }
     }
 }

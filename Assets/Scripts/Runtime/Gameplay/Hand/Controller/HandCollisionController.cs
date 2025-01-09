@@ -1,7 +1,10 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Runtime.Enums;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
+using Runtime.Signals;
+using Zenject;
 
 namespace Runtime.Gameplay.Hand.Controller
 {
@@ -11,10 +14,13 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private readonly HandModel _model;
 
-        public HandCollisionController(HandView view, HandModel model)
+        private readonly SignalBus _signalBus;
+
+        public HandCollisionController(HandView view, HandModel model, SignalBus signalBus)
         {
             _view = view;
             _model = model;
+            _signalBus = signalBus;
             
             SubscribeEvents();
         }
@@ -26,7 +32,13 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void OnTriggerCollider()
         {
+            PlayButtonClickSound();
             ToggleColliderTemporarily().Forget();
+        }
+
+        private void PlayButtonClickSound()
+        {
+            _signalBus.Fire(new PlayAudioClipSignal(AudioClipType.ButtonClick));
         }
         
         private async UniTaskVoid ToggleColliderTemporarily()

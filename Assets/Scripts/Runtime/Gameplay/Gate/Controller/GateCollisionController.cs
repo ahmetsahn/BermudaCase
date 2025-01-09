@@ -1,4 +1,5 @@
 ﻿using System;
+using Runtime.Enums;
 using Runtime.Gameplay.Gate.Model;
 using Runtime.Gameplay.Gate.View;
 using Runtime.Signals;
@@ -30,10 +31,18 @@ namespace Runtime.Gameplay.Gate.Controller
         
         private void OnZoneEnter()
         {
+            PlayGateCollisionSound();
             DisableColliderOppositeGate();
             DisableCollider();
             ApplyFeedBackColor();
             ApplyBuffEffect();
+        }
+
+        private void PlayGateCollisionSound()
+        {
+            _signalBus.Fire(_model.BuffValue > 0
+                ? new PlayAudioClipSignal(AudioClipType.GoodGate,true)
+                : new PlayAudioClipSignal(AudioClipType.BadGate,true));
         }
 
         private void DisableColliderOppositeGate()
