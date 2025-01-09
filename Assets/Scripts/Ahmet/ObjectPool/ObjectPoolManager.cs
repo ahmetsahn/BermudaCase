@@ -91,6 +91,8 @@ namespace Ahmet.ObjectPool
             else
             {
                 pool.InactiveObjects.Remove(spawnableObject);
+                spawnableObject.transform.SetParent(parent);
+                spawnableObject.transform.localPosition = Vector3.zero;
                 spawnableObject.SetActive(true);
             }
             

@@ -10,8 +10,6 @@ namespace Runtime.Gameplay.Hand.View
         
         public Transform[] LineTransforms;
         
-        public BoxCollider BoxCollider;
-        
         public Action<Vector2> OnSwipe;
         
         public Action OnCollisionZone;

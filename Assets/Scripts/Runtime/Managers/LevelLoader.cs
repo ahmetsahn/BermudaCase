@@ -46,6 +46,7 @@ namespace Runtime.Managers
                 
                 _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
             }
+            
             catch (Exception ex)
             {
                 Debug.LogError($"Level loading failed: {ex.Message}");

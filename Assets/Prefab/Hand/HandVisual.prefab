@@ -1172,8 +1172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3566b04a62ff48a5b4cf87007bf1388d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handModelConfig:
-    ColliderToggleDelay: 0.1
 --- !u!114 &3404847644572207353
 MonoBehaviour:
   m_ObjectHideFlags: 0

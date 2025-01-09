@@ -41,8 +41,8 @@ namespace Runtime.Gameplay.Gate.Controller
         private void PlayGateCollisionSound()
         {
             _signalBus.Fire(_model.BuffValue > 0
-                ? new PlayAudioClipSignal(AudioClipType.GoodGate,true)
-                : new PlayAudioClipSignal(AudioClipType.BadGate,true));
+                ? new PlayAudioClipSignal(AudioClipType.GoodGate)
+                : new PlayAudioClipSignal(AudioClipType.BadGate));
         }
 
         private void DisableColliderOppositeGate()

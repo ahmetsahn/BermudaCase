@@ -67,6 +67,7 @@ namespace Runtime.Gameplay.Hand.Controller
             if (lineTransform.childCount > 1)
             {
                 var lastChild = lineTransform.GetChild(lineTransform.childCount - 1);
+                lastChild.transform.SetParent(null);
                 ObjectPoolManager.ReturnObjectToPool(lastChild.gameObject);
             }
         }

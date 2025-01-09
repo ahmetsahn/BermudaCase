@@ -11,15 +11,12 @@ namespace Runtime.Gameplay.Hand.Controller
     public class HandCollisionController : IDisposable
     {
         private readonly HandView _view;
-        
-        private readonly HandModel _model;
 
         private readonly SignalBus _signalBus;
 
-        public HandCollisionController(HandView view, HandModel model, SignalBus signalBus)
+        public HandCollisionController(HandView view, SignalBus signalBus)
         {
             _view = view;
-            _model = model;
             _signalBus = signalBus;
             
             SubscribeEvents();
@@ -32,20 +29,12 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void OnTriggerCollider()
         {
-            PlayButtonClickSound();
-            ToggleColliderTemporarily().Forget();
-        }
-
-        private void PlayButtonClickSound()
-        {
-            _signalBus.Fire(new PlayAudioClipSignal(AudioClipType.ButtonClick));
+            DisableCollider();
         }
         
-        private async UniTaskVoid ToggleColliderTemporarily()
+        private void DisableCollider()
         {
             _view.BoxCollider.enabled = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_model.ColliderToggleDelay));
-            _view.BoxCollider.enabled = true;
         }
         
         private void UnsubscribeEvents()

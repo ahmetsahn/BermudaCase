@@ -83,7 +83,9 @@ namespace Runtime.Gameplay.Hand.Controller
             Transform lineTransform = _view.LineTransforms[index];
             for (int i = lineTransform.childCount - 1; i >= 0; i--)
             {
-                ObjectPoolManager.ReturnObjectToPool(lineTransform.GetChild(i).gameObject);
+                var hand = lineTransform.GetChild(i).gameObject;
+                hand.transform.SetParent(null);
+                ObjectPoolManager.ReturnObjectToPool(hand);
             }
         }
 

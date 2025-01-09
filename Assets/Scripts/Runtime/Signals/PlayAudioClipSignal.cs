@@ -6,12 +6,9 @@ namespace Runtime.Signals
     {
         public readonly AudioClipType AudioClipType;
 
-        public readonly bool IsEffect;
-
-        public PlayAudioClipSignal(AudioClipType audioClipType, bool isEffect = false)
+        public PlayAudioClipSignal(AudioClipType audioClipType)
         {
             AudioClipType = audioClipType;
-            IsEffect = isEffect;
         }
     }
 }

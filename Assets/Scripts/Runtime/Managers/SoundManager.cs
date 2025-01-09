@@ -4,15 +4,12 @@ using Runtime.Enums;
 using Runtime.Signals;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Runtime.Managers
 {
     public class SoundManager : IDisposable
     {
-        private readonly AudioSource _buttonAudioSource;
-        
-        private readonly AudioSource _effectAudioSource;
+        private readonly AudioSource _audioSource;
         
         private readonly SerializedDictionary<AudioClipType, AudioClip> _audioClipsDictionary;
 
@@ -20,8 +17,7 @@ namespace Runtime.Managers
         
         public SoundManager(SoundManagerConfig config, SignalBus signalBus)
         {
-            _buttonAudioSource = config.ButtonAudioSource;
-            _effectAudioSource = config.EffectAudioSource;
+            _audioSource = config.AudioSource;
             _audioClipsDictionary = config.AudioClipsDictionary;
             _signalBus = signalBus;
 
@@ -35,16 +31,7 @@ namespace Runtime.Managers
         
         private void OnPlayAudioClip(PlayAudioClipSignal signal)
         {
-            if (signal.IsEffect)
-            {
-                _effectAudioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
-                return;
-            }
-
-            if (!_buttonAudioSource.isPlaying)
-            {
-                _buttonAudioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
-            }
+            _audioSource.PlayOneShot(_audioClipsDictionary[signal.AudioClipType]);
         }
 
         private void UnsubscribeEvents()
@@ -61,8 +48,7 @@ namespace Runtime.Managers
     [Serializable]
     public struct SoundManagerConfig
     {
-        public AudioSource ButtonAudioSource;
-        public AudioSource EffectAudioSource;
+        public AudioSource AudioSource;
         
         public SerializedDictionary<AudioClipType, AudioClip> AudioClipsDictionary;
     }
