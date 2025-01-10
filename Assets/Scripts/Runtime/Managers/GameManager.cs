@@ -11,9 +11,9 @@ namespace Runtime.Managers
         private GameState _currentGameState;
         
         private readonly SignalBus _signalBus;
-
+        
+        private readonly int _maxLevel;
         private int _currentLevelIndex;
-        private int _maxLevel;
         
         public GameManager(GameManagerConfig config, SignalBus signalBus)
         {
@@ -25,6 +25,7 @@ namespace Runtime.Managers
 
         public void Initialize()
         {
+            
             _signalBus.Fire(new LoadLevelSignal(_currentLevelIndex));
         }
         

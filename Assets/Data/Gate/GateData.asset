@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec9c23ad1cd47dcbd69baf3f657800b, type: 3}
-  m_Name: PushRateBuff
+  m_Script: {fileID: 11500000, guid: 1850be2e6dd54349af70d3ec395a99be, type: 3}
+  m_Name: GateData
   m_EditorClassIdentifier: 
+  FeedBackColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}

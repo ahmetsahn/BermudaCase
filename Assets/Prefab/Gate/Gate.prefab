@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gateModelConfig:
+    Data: {fileID: 11400000, guid: b8e7716dd00b22642a1b44ca7c8a3baa, type: 2}
     BuffType: 0
     BuffValue: 0
-    FeedBackColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
 --- !u!114 &2480195946538616597
 MonoBehaviour:
   m_ObjectHideFlags: 0

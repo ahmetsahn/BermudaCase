@@ -60,7 +60,7 @@ namespace Runtime.Gameplay.Gate.Controller
 
         private void ApplyFeedBackColor()
         {
-            _view.GradientSprite.color = _model.FeedBackColor;
+            _view.GradientSprite.color = _model.Data.FeedBackColor;
         }
 
         private void ApplyBuffEffect()

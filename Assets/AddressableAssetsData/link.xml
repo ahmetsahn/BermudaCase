@@ -1,6 +1,7 @@
 <linker>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Runtime.Gameplay.Gate.Installer.GateInstaller" preserve="all" />
+    <type fullname="Runtime.Gameplay.Gate.Model.GateSo" preserve="all" />
     <type fullname="Runtime.Gameplay.Gate.View.GateView" preserve="all" />
     <type fullname="Runtime.Gameplay.Hand.Installer.HandInstaller" preserve="all" />
     <type fullname="Runtime.Gameplay.Hand.Installer.HandParentInstaller" preserve="all" />
