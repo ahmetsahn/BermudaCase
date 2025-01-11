@@ -59,6 +59,7 @@ namespace Runtime.Core
             Container.DeclareSignal<ApplyBuffSignal>();
             Container.DeclareSignal<PlayAudioClipSignal>();
             Container.DeclareSignal<SpawnObjectSignal>();
+            Container.DeclareSignal<EnableHandCollidersSignal>();
         }
     }
 }

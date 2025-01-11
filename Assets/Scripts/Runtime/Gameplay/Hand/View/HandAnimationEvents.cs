@@ -15,23 +15,9 @@ namespace Runtime.Gameplay.Hand.View
             _signalBus = signalBus;
         }
         
-        public void EnableColliders()
+        public void EnableHandColliders()
         {
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                Transform child = transform.GetChild(i);
-                
-                for (int j = 0; j < child.childCount; j++)
-                {
-                    Transform grandChild = child.GetChild(j);
-                    
-                    BoxCollider collider = grandChild.GetComponent<BoxCollider>();
-                    if (collider != null)
-                    {
-                        collider.enabled = true;
-                    }
-                }
-            }
+            _signalBus.Fire(new EnableHandCollidersSignal());
         }
         
         public void PlayButtonClickSound()

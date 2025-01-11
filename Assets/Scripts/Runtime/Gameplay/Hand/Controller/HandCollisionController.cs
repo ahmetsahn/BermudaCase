@@ -24,7 +24,13 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void SubscribeEvents()
         {
+            _signalBus.Subscribe<EnableHandCollidersSignal>(OnEnableHandCollider);
             _view.OnTriggerCollider += OnTriggerCollider;
+        }
+
+        private void OnEnableHandCollider()
+        {
+            _view.BoxCollider.enabled = true;
         }
         
         private void OnTriggerCollider()
@@ -39,6 +45,7 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void UnsubscribeEvents()
         {
+            _signalBus.Unsubscribe<EnableHandCollidersSignal>(OnEnableHandCollider);
             _view.OnTriggerCollider -= OnTriggerCollider;
         }
         
