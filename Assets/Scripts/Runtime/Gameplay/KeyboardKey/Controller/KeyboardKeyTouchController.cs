@@ -51,12 +51,12 @@ namespace Runtime.Gameplay.KeyboardKey.Controller
         
         private void UpWithAnimation()
         {
-            _view.transform.DOMoveY(KeyboardKeyModel.FeedbackHeight, KeyboardKeyModel.FeedbackDuration).SetEase(KeyboardKeyModel.FeedbackEase);
+            _view.transform.DOMoveY(_model.Data.FeedbackHeight, _model.Data.FeedbackDuration).SetEase(_model.Data.FeedbackEase);
         }
 
         private void SetMaterialColor()
         {
-            _view.MeshRenderer.material.DOColor(_model.FeedbackColor, KeyboardKeyModel.FeedbackDuration);
+            _view.MeshRenderer.material.DOColor(_model.Data.FeedbackColor, _model.Data.FeedbackDuration);
         }
         
         private void UnsubscribeEvents()

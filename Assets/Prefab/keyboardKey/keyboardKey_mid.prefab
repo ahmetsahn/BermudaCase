@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfeb2da59fd4b80bfbde8566a30565c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyboardKeyModelConfig:
+    Data: {fileID: 11400000, guid: 76a15ceba550ec944a8d5b16477b7db5, type: 2}
 --- !u!1 &8178849030756668396
 GameObject:
   m_ObjectHideFlags: 0
