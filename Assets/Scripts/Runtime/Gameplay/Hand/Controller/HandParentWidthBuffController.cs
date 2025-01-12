@@ -64,7 +64,7 @@ namespace Runtime.Gameplay.Hand.Controller
         private void RemoveHand(int lineIndex)
         {
             var lineTransform = _view.LineTransforms[lineIndex];
-            if (lineTransform.childCount > 1)
+            if (lineTransform.childCount > _model.MinWidth)
             {
                 var lastChild = lineTransform.GetChild(lineTransform.childCount - 1);
                 lastChild.transform.SetParent(null);

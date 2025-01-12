@@ -26,8 +26,6 @@ namespace Runtime.Gameplay.Hand.Model
         
         public GameObject HandPrefab;
         
-        public Vector2 SwipeDelta;
-        
         public string PushAnimationSpeedParameter = "PushRateSpeed";
         
         public HandParentModel(HandParentModelConfig config)

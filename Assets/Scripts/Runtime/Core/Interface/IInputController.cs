@@ -2,11 +2,9 @@
 
 namespace Runtime.Core.Interface
 {
-    public interface IInputHandler
+    public interface IInputController
     {
         Vector2 GetSwipeDelta(); 
-        
-        bool IsInputActive();
         
         bool TapToStart();
     }

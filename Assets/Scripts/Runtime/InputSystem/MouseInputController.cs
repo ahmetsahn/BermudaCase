@@ -1,9 +1,9 @@
 ﻿using Runtime.Core.Interface;
 using UnityEngine;
 
-namespace Runtime.InputHandler
+namespace Runtime.InputSystem
 {
-    public class MouseInputHandler : IInputHandler
+    public class MouseInputController : IInputController
     {
         private Vector2 _startMousePosition;
         private Vector2 _swipeDelta;
@@ -23,11 +23,6 @@ namespace Runtime.InputHandler
                 _swipeDelta = Vector2.zero;
             }
             return _swipeDelta;
-        }
-
-        public bool IsInputActive()
-        {
-            return Input.GetMouseButton(0);
         }
 
         public bool TapToStart()

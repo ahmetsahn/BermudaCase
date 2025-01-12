@@ -1,4 +1,6 @@
 ﻿using Ahmet.ObjectPool;
+using Runtime.Core.Interface;
+using Runtime.InputSystem;
 using Runtime.Managers;
 using Runtime.Signals;
 using Runtime.UI;
@@ -38,8 +40,15 @@ namespace Runtime.Core
             Container.BindInterfacesTo<UIManager>().AsSingle().WithArguments(uiManagerConfig);
             Container.BindInterfacesTo<BuffManager>().AsSingle().WithArguments(buffManagerConfig);
             Container.BindInterfacesTo<SoundManager>().AsSingle().WithArguments(soundManagerConfig);
+            Container.BindInterfacesTo<InputController>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<GameManager>().AsSingle().WithArguments(gameManagerConfig);
+            
+#if UNITY_ANDROID || UNITY_IOS
+            Container.Bind<IInputController>().To<TouchInputController>().AsSingle();
+#else
+            Container.Bind<IInputController>().To<MouseInputController>().AsSingle();
+#endif
         }
         
         private void BindSignals()
@@ -60,6 +69,7 @@ namespace Runtime.Core
             Container.DeclareSignal<PlayAudioClipSignal>();
             Container.DeclareSignal<SpawnObjectSignal>();
             Container.DeclareSignal<EnableHandCollidersSignal>();
+            Container.DeclareSignal<SwipeSignal>();
         }
     }
 }

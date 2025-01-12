@@ -6,7 +6,6 @@ using Runtime.Gameplay.Hand.View;
 using Runtime.Signals;
 using UnityEngine;
 using Zenject;
-using Object = UnityEngine.Object;
 
 namespace Runtime.Gameplay.Hand.Controller
 {

@@ -2,9 +2,9 @@
 using Runtime.Core.Interface;
 using UnityEngine;
 
-namespace Runtime.InputHandler
+namespace Runtime.InputSystem
 {
-    public class TouchInputHandler : IInputHandler
+    public class TouchInputController : IInputController
     {
         private Vector2 _startTouchPosition;
         private Vector2 _swipeDelta;
@@ -35,11 +35,6 @@ namespace Runtime.InputHandler
                     throw new ArgumentOutOfRangeException();
             }
             return _swipeDelta;
-        }
-
-        public bool IsInputActive()
-        {
-            return Input.touchCount > 0;
         }
 
         public bool TapToStart()

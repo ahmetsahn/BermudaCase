@@ -1,6 +1,7 @@
 ﻿using System;
 using Runtime.Gameplay.Hand.Model;
 using Runtime.Gameplay.Hand.View;
+using Runtime.Signals;
 using UnityEngine;
 using Zenject;
 
@@ -8,17 +9,20 @@ namespace Runtime.Gameplay.Hand.Controller
 {
     public class HandParentMovementController : ITickable, IDisposable
     {
-        private readonly HandParentView _parentView;
+        private readonly HandParentView _view;
         
-        private readonly HandParentModel _parentModel;
+        private readonly HandParentModel _model;
+
+        private readonly SignalBus _signalBus;
         
         private float _currentX;
         private float _currentZ;
 
-        public HandParentMovementController(HandParentView parentView, HandParentModel parentModel)
+        public HandParentMovementController(HandParentView view, HandParentModel model, SignalBus signalBus)
         {
-            _parentView = parentView;
-            _parentModel = parentModel;
+            _view = view;
+            _model = model;
+            _signalBus = signalBus;
             
             Initialize();
             SubscribeEvents();
@@ -26,13 +30,13 @@ namespace Runtime.Gameplay.Hand.Controller
         
         private void Initialize()
         {
-            _currentX = _parentView.transform.position.x;
-            _currentZ = _parentView.transform.position.z;
+            _currentX = _view.transform.position.x;
+            _currentZ = _view.transform.position.z;
         }
 
         private void SubscribeEvents()
         {
-            _parentView.OnSwipe += OnSwipe;
+            _signalBus.Subscribe<SwipeSignal>(OnSwipe);
         }
         
         public void Tick()
@@ -40,34 +44,32 @@ namespace Runtime.Gameplay.Hand.Controller
             ForwardMove();
         }
 
-        private void OnSwipe(Vector2 direction)
+        private void OnSwipe(SwipeSignal signal)
         {
-            _parentModel.SwipeDelta = direction;
-            
-            HorizontalMove();
+            HorizontalMove(signal.Direction);
         }
 
-        private void HorizontalMove()
+        private void HorizontalMove(Vector2 direction)
         {
-            _currentX += _parentModel.SwipeDelta.x * _parentModel.HorizontalSpeed * Time.deltaTime;
-            _currentX = Mathf.Clamp(_currentX, _parentModel.MinX, _parentModel.MaxX);
+            _currentX += direction.x * _model.HorizontalSpeed * Time.deltaTime;
+            _currentX = Mathf.Clamp(_currentX, _model.MinX, _model.MaxX);
             UpdateTransform();
         }
 
         private void ForwardMove()
         {
-            _currentZ += _parentModel.ForwardSpeed * Time.deltaTime;
+            _currentZ += _model.ForwardSpeed * Time.deltaTime;
             UpdateTransform();
         }
 
         private void UpdateTransform()
         {
-            _parentView.transform.position = new Vector3(_currentX, _parentView.transform.position.y, _currentZ);
+            _view.transform.position = new Vector3(_currentX, _view.transform.position.y, _currentZ);
         }
         
         private void UnsubscribeEvents()
         {
-            _parentView.OnSwipe -= OnSwipe;
+            _signalBus.Unsubscribe<SwipeSignal>(OnSwipe);
         }
         public void Dispose()
         {
