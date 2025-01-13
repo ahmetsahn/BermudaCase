@@ -19,6 +19,8 @@ namespace Runtime.Managers
         private readonly AssetReferenceGameObject[] _levelPrefabs;
 
         private GameObject _currentLevelInstance;
+        
+        private AsyncOperationHandle<GameObject> _currentLevelHandle;
 
         public LevelLoader(SignalBus signalBus, IInstantiator instantiator, LevelLoaderConfig config)
         {
@@ -31,48 +33,37 @@ namespace Runtime.Managers
 
         private void SubscribeEvents()
         {
-            _signalBus.Subscribe<LoadLevelSignal>(OnLoadLevelAsync);
+            _signalBus.Subscribe<LoadLevelSignal>(OnLoadLevel);
             _signalBus.Subscribe<DestroyCurrentLevelSignal>(OnDestroyCurrentLevel);
         }
 
-        private async void OnLoadLevelAsync(LoadLevelSignal signal)
+        private void OnLoadLevel(LoadLevelSignal signal)
         {
-            try
-            {
-                if (_currentLevelInstance != null)
-                {
-                    DestroyCurrentLevel();
-                }
+            _signalBus.Fire(new SetGameStateSignal(GameState.Loading));
+            _currentLevelHandle = Addressables.LoadAssetAsync<GameObject>(_levelPrefabs[signal.LevelIndex]);
+            _currentLevelHandle.Completed += OnLevelLoadComplete;
+        }
 
-                _signalBus.Fire(new SetGameStateSignal(GameState.Loading));
-                GameObject levelPrefab = await Addressables.LoadAssetAsync<GameObject>(_levelPrefabs[signal.LevelIndex]).Task;
-                _currentLevelInstance = _instantiator.InstantiatePrefab(levelPrefab);
-                _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
+        private void OnLevelLoadComplete(AsyncOperationHandle<GameObject> obj)
+        {
+            if (obj.Status != AsyncOperationStatus.Succeeded)
+            {
+                return;
             }
             
-            catch (Exception ex)
-            {
-                Debug.LogError($"Level loading failed: {ex.Message}");
-            }
+            _currentLevelInstance = _instantiator.InstantiatePrefab(obj.Result);
+            _signalBus.Fire(new SetGameStateSignal(GameState.ReadyToStart));
         }
 
         private void OnDestroyCurrentLevel(DestroyCurrentLevelSignal signal)
         {
-            DestroyCurrentLevel();
-        }
-
-        private void DestroyCurrentLevel()
-        {
-            if (_currentLevelInstance != null)
-            {
-                Object.Destroy(_currentLevelInstance);
-                _currentLevelInstance = null;
-            }
+            Object.Destroy(_currentLevelInstance);
+            Addressables.ReleaseInstance(_currentLevelHandle);
         }
 
         private void UnsubscribeEvents()
         {
-            _signalBus.Unsubscribe<LoadLevelSignal>(OnLoadLevelAsync);
+            _signalBus.Unsubscribe<LoadLevelSignal>(OnLoadLevel);
             _signalBus.Unsubscribe<DestroyCurrentLevelSignal>(OnDestroyCurrentLevel);
         }
 
